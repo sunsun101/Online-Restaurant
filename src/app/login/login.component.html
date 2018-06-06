@@ -1,0 +1,59 @@
+<app-header></app-header>
+<!-- reactive form start -->
+<div class = "loginform">
+    <div class = "row">
+
+        <div class = "col-12">
+      
+            <h3>Login</h3>
+            <form [formGroup] = "loginForm" (ngSubmit) = "loginsubmit()" >
+                
+                <div class="form-group">
+                    
+                    <label for="Username">Username:</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="user_name"
+                    formControlName = "username"
+                    required>
+                
+                </div>
+                <span
+                *ngIf ="!loginForm.get('username').valid && loginForm.get('username').touched">
+                    Please enter valid username!!
+                </span>
+               
+                
+               
+                <div class="form-group">
+                    <label for="pwd">Password:</label>
+                    <input 
+                    type="password" 
+                    class="form-control" 
+                    id="pwd"
+                    formControlName = "password"
+                    required >
+      
+                </div>
+                <span
+                *ngIf ="!loginForm.get('password').valid && loginForm.get('password').touched">
+                 
+                   Incorrect Password
+                </span>
+                
+      
+               <a routerLink = "/home"> <button type="submit" class="btn btn-primary" >Login</button></a>
+        
+      
+          </form> 
+        </div>
+        
+      </div>
+      <p>Dont have an account yet?</p>
+      <a routerLink = "/signup">Sign up</a> 
+</div>
+
+
+<!-- end of reactive form -->
+

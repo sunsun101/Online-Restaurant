@@ -1,0 +1,15 @@
+<app-body-header></app-body-header>
+
+<!-- div for displaying images -->
+<div class ="row" >
+  
+  <div class = "col-4" *ngFor = "let fl of foodlist;let i = index">
+      <img src = {{fl.image}} class = "image">
+      <p>Item Name : {{fl.name}}</p>
+      <p>Price: {{fl.price}}</p>
+      <button class = "btn btn-primary" (click) = "addtolist(this.i)" (mouseover) = "onmouseover(this.i)" (mouseleave) = "onmouseleave()">{{buttonvalue}}</button>
+  </div>
+  
+  
+</div> 
+

@@ -1,0 +1,152 @@
+<app-header></app-header>
+<!-- Template driven form -->
+
+<div class = "row">
+
+  <div class = "col-6">
+  
+        <h3>Signup</h3>
+        <form (ngSubmit) = onformsubmit() #f = "ngForm">
+            
+            <div class="form-group">
+                
+                <label for="firstname">First name:</label>
+                <input 
+                type="text" 
+                class="form-control" 
+                id="first_name"
+                ngModel
+                name = "firstname"
+                required>
+  
+            </div>
+            
+            <div class="form-group">
+                
+                <label for="Lastname">Last name:</label>
+                <input 
+                type="text" 
+                class="form-control" 
+                id="last_name"
+                ngModel
+                name = "lastname"
+                required>
+            
+            </div>
+  
+            <div class="form-group">
+                
+                <label for="Username">Username:</label>
+                <input 
+                type="text" 
+                class="form-control" 
+                id="user_name"
+                ngModel
+                name = "username"
+                required>
+            
+            </div>
+           
+            <div class="form-group">
+                <label for="email">Email address:</label>
+                <input 
+                type="email" 
+                class="form-control" 
+                id="email"
+                ngModel
+                name = "email"
+                required
+                email
+                #email = ngModel
+                >
+            </div>
+            <p *ngIf = "!email.valid && email.touched">Please enter valid email id</p>
+  
+           
+            <div class="form-group">
+                <label for="pwd">Password:</label>
+                <input 
+                type="password" 
+                class="form-control" 
+                id="pwd"
+                ngModel
+                name = "password"
+                required
+                #password = ngModel
+                >
+            </div>
+            <p *ngIf = "!password.valid && password.touched">Password required</p>
+  
+            <div class = "form-group">
+                  <label for = "gender"> Gender </label>
+                  <select
+                  id = "gender"
+                  class = "form-control"
+                  name = "gender"
+                  ngModel
+                  [ngModel] = "defaultvalue">
+  
+                    <option value = "male">Male</option>
+                    <option value = "female">Female</option>
+                    <option value = "other">Other</option>
+                  
+  
+  
+                  </select>
+            </div>
+  
+            <div class = "radio" *ngFor= "let ms of maritalstatus">
+  
+                  <label>
+                          <input type = "radio" name = "marital_status" ngModel [value]  = "ms">{{ms}}
+                  
+                  </label>
+                    
+              
+            </div>
+  
+            <div class="checkbox">
+                <label>
+                  <input type="checkbox" 
+                  name = "checkbox"> Remember me</label>
+            </div>
+          
+           <button type="submit" class="btn btn-primary" [disabled] = "!f.valid" (click)= "onsubmit()" >Sign up</button>
+    
+  
+      </form> 
+    </div>
+
+
+    <!-- end template drive form -->
+
+
+    <!-- displaying form data -->
+    <div class = "col-6">
+      <h3>Form Data</h3>
+  
+      <p>Firstname:{{user.firstname}}</p>
+      <p>Lastname:{{user.lastname}}</p>
+      <p>Username:{{user.username}}</p>
+      <p>Email:{{user.email}}</p>
+      <p>Marital Status:{{user.maritalstatus}}</p>
+      <p>Gender:{{user.gender}}</p>
+    
+    </div>
+  </div>
+
+  <!-- end of display data -->
+
+
+  <!-- display of posted  data-->
+<div>
+    <p>Firstname: {{post_obj.firstname}}</p>
+    <p>Lastname: {{post_obj.lastname}}</p>
+    <p>Username: {{post_obj.username}}</p>
+    <p>Email: {{post_obj.email}}</p>
+    <p>Marital Status: {{post_obj.maritalstatus}}</p>
+    <p>Gender: {{post_obj.gender}}</p>
+    <button class = "btn btn-primary" (click)= "postdetail()">Posted data</button>
+</div>
+<!-- end of post display -->
+  
