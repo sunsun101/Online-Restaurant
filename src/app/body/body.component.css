@@ -1,8 +1,20 @@
 .col-4{
 	padding: 10px;
+	
 
 }
 .image{
 	width: inherit;
 	height: 275px;
+	overflow: hidden;
+
+}
+.container{
+	width: 1140px;
+	max-width: 100%;
+}
+.col-4:hover{
+	transform: scale(1.09);
+	overflow: hidden;
+
 }

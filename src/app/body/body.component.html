@@ -1,15 +1,42 @@
 <app-body-header></app-body-header>
 
 <!-- div for displaying images -->
-<div class ="row" >
-  
-  <div class = "col-4" *ngFor = "let fl of foodlist;let i = index">
-      <img src = {{fl.image}} class = "image">
-      <p>Item Name : {{fl.name}}</p>
-      <p>Price: {{fl.price}}</p>
-      <button class = "btn btn-primary" (click) = "addtolist(this.i)" (mouseover) = "onmouseover(this.i)" (mouseleave) = "onmouseleave()">{{buttonvalue}}</button>
-  </div>
-  
-  
-</div> 
 
+<div class = "container">
+ 
+  <div class ="row" >
+  
+    <div class = "col-4" *ngFor = "let fl of foodlist;let i = index">
+        <img src = {{fl.image}} class = "image" >
+        <p>Item Name : {{fl.name}}</p>
+        <p>Price: {{fl.price}}</p>
+      
+        <button class = "btn btn-primary" (click) = "addtolist(this.i)" (mouseover) = "onmouseover(this.i)" (mouseleave) = "onmouseleave()">{{buttonvalue[i]}}</button>
+        
+    </div>
+    
+    
+  </div> 
+  
+  
+</div>
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Modal title</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>One fine body&hellip;</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+  </div>
+</ng-template>
+
+<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button>
+
+<hr>
+
+<pre>{{closeResult}}</pre>
