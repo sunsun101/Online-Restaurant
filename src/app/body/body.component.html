@@ -11,7 +11,7 @@
         <p>Item Name : {{fl.name}}</p>
         <p>Price: {{fl.price}}</p>
       
-        <button class = "btn btn-primary" (click) = "addtolist(this.i)" (mouseover) = "onmouseover(this.i)" (mouseleave) = "onmouseleave()">{{buttonvalue[i]}}</button>
+        <button class = "btn btn-primary" (click) = "open(content, i)" (mouseover) = "onmouseover(this.i)" (mouseleave) = "onmouseleave()">{{buttonvalue[i]}}</button>
         
     </div>
     
@@ -20,23 +20,67 @@
   
   
 </div>
+
+
 <ng-template #content let-c="close" let-d="dismiss">
+  
   <div class="modal-header">
-    <h4 class="modal-title">Modal title</h4>
+    <h3>Payment Option</h3>
     <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
+  
+  
   <div class="modal-body">
-    <p>One fine body&hellip;</p>
+     
+    <form >
+
+      <div class="form-group">
+          <label>Item Name:</label>
+        <input type="text" class = "form-control" value ={{name|uppercase}}  readonly>
+      </div>
+      
+      <div class="form-group">
+          <label>Quantity:</label>
+          <input type="number" class="form-control" name = "quantity" min="1" max="100" value="1" ngModel #quantitybox (change) = "getquantity(quantitybox.value)">
+
+      </div>
+      <div class = "form-group">
+          <label>Total Price:</label> 
+          <input type="text" value ={{price}} class = "form-control"  readonly> 
+      </div>
+     
+        
+      <div class = "radio">
+            <div class = "row">
+             
+              <div class = "col-6">
+                  <label>
+                      <input type= "radio" name= "payment-option"><img src="./assets/visa.png " class = "payment_image">
+                  </label>
+              </div>
+              
+              <div class= "col-6">
+                  <label>
+                      <input type= "radio" name = "payment-option"><img src="./assets/master.png" class = "payment_image">
+                  </label>
+              </div>
+            
+             </div>
+            
+      </div>
+    </form>
+    
   </div>
+
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Next</button>
   </div>
+ 
 </ng-template>
-
-<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button>
-
 <hr>
 
-<pre>{{closeResult}}</pre>
+<pre>{{Result}}</pre>
+
+

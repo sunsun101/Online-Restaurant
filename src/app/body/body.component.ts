@@ -4,6 +4,7 @@ import {FoodService} from '../food.service';
 import {fooditem} from '../fooditem';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { ViewChild , Input} from '@angular/core';
 
 @Component({
   selector: 'app-body',
@@ -17,6 +18,8 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 export class BodyComponent implements OnInit {
 
+  @ViewChild('f') signupform: NgForm;
+
   message = "This item not ordered yet";
   displayimage = "./assets/food1.jpg";
 
@@ -26,7 +29,10 @@ export class BodyComponent implements OnInit {
 
   len : number;
   i : number;
-  
+  name : string;
+  price : number;
+  fixedprice : number;
+  quantity : number;
 
 
   searchvalue(form : NgForm){
@@ -45,12 +51,12 @@ export class BodyComponent implements OnInit {
     
   }
 
-  addtolist(i : number){
-    this.message = "Food ordered";
-  
-   
-
+  getquantity(i : number){
+    console.log("entered function getquantity");
+    this.price = this.fixedprice * i;
   }
+
+ 
   onmouseover(i : number){
     this.buttonvalue[i] = "Place Order";
     this.color = "red";
@@ -83,8 +89,12 @@ export class BodyComponent implements OnInit {
 
  
 
-  open(content) {
+  open(content, j : number) {
+    this.name = this.foodlist[j].name;
+    this.price = this.foodlist[j].price ;
+    this.fixedprice = this.foodlist[j].price;
     this.modalService.open(content).result;
+  
   }
 
   private getDismissReason(reason: any): string {

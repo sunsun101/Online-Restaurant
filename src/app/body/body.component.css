@@ -18,3 +18,8 @@
 	overflow: hidden;
 
 }
+.payment_image{
+	width: 200px;
+	max-width: 100%;
+	height: 135px;
+}
