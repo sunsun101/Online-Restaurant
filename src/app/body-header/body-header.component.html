@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar  navbar-fixed-top  navbar-expand-lg navbar-light bg-light">
   
   <a class="navbar-brand" href="#">{{title}}</a>
 	
@@ -13,11 +13,11 @@
 		<ul class="navbar-nav mr-auto">
 		
 			<li class="nav-item active">
-		  		<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+		  		<a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
 			</li>
 		
 			<li class="nav-item">
-		  		<a class="nav-link" href="#">About us</a>
+		  		<a class="nav-link" href="/aboutus">About us</a>
 			</li>
 			
 			<li class="nav-item">
@@ -30,8 +30,8 @@
 		<form class = "search" >
     	<div class = "form-group">
      
-				<input type = "text" id="search-box" name = "search" [(ngModel)] = "display" placeholder="Search" #searchBox (keyup)= "search(searchBox.value)" autocomplete="off" >
-				<button class="btn btn-outline-success my-2 my-sm-0" type="submit"  >Search</button>
+				<input type = "text" id="search-box" name = "search" [(ngModel)] = "display" placeholder="Search" #searchBox  autocomplete="off" >
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)= "searchitem(searchBox.value)" >Search</button>
 		
 				<ul class="search-result">
 					<li *ngFor="let fl of foodlist$ | async" >

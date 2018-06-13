@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Observable, Subject } from 'rxjs';
 import { fooditem } from '../fooditem';
-import { FoodService } from '../food.service';
 import {
   debounceTime, distinctUntilChanged, switchMap
 } from 'rxjs/operators';
+import {Routes, Router} from '@angular/router';
 
 @Component({
   selector: 'app-body-header',
@@ -14,30 +14,36 @@ import {
 })
 export class BodyHeaderComponent implements OnInit {
 
-  foodlist$: Observable<fooditem[]>;
-  private searchTerms = new Subject<string>();
+  foodlist : any;
   display = "";
-
-  constructor(private foodservice : FoodService) { }
   
   
-  search(term: string): void {
-    this.searchTerms.next(term);
- }
-    
 
-  ngOnInit(){
-    this.foodlist$ = this.searchTerms.pipe(
-      // wait 300ms after each keystroke before considering the term
-      debounceTime(300),
- 
-      // ignore new term if same as previous term
-      distinctUntilChanged(),
- 
-      // switch to new search observable each time the term changes
-      switchMap((term: string) => this.foodservice.searchFoodItem(term)),
-    );
+  constructor( private router : Router ) { 
+
   }
   
+  ngOnInit(){
 
+
+    
+  }
+  
+  searchitem(i : string){
+    
+
+    
+          console.log("search function working");
+       
+          this.router.navigate(['/search_display'], 
+          {queryParams: {
+          
+              "property_name": i }
+          
+          });
+ 
+        }
+      
+    
+    
 }

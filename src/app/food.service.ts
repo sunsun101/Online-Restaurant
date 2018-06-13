@@ -22,7 +22,7 @@ export class FoodService {
       );
     }
 
-
+ 
 
     private handleError<T> (operation = 'operation', result?: T) {
       return (error: any): Observable<T> => {
@@ -36,16 +36,16 @@ export class FoodService {
     }
 
 
-    searchFoodItem(term: string): Observable<fooditem[]> {
-      if (!term.trim()) {
+    // searchFoodItem(term: string): Observable<fooditem[]> {
+    //   if (!term.trim()) {
        
-        return of([]);
-      }
-      return this.http.get<fooditem[]>(`${this.foodUrl}/?name=${term}`).pipe(
+    //     return of([]);
+    //   }
+    //   return this.http.get<fooditem[]>(`${this.foodUrl}/?name=${term}`).pipe(
         
-        catchError(this.handleError<fooditem[]>('searchFoodItem', []))
-      );
+    //     catchError(this.handleError<fooditem[]>('searchFoodItem', []))
+    //   );
 
-    }
+    // }
  
 }

@@ -16,6 +16,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './in-memory-data.service';
 import { AboutUsComponent } from './about-us/about-us.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { SearchdisplayComponent } from './searchdisplay/searchdisplay.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     LoginComponent,
     SignupComponent,
     BodyHeaderComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    SearchdisplayComponent
   ],
   imports: [
     BrowserModule,

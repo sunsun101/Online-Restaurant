@@ -1,4 +1,5 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
+import {fooditem} from './fooditem';
 
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
@@ -15,4 +16,7 @@ export class InMemoryDataService implements InMemoryDbService {
     ]
     return {Foodlist};
   }
+
+ 
 }
+
