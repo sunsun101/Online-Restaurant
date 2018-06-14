@@ -14,17 +14,9 @@ export class postServices{
     private user: any;
 
     postvalues(user){
-
-        let _url : string = "https://reqres.in/api/users";
+        console.log("entered postvalues");
+        let _url : string = "https://ng-online-restaurant.firebaseio.com/data.json ";
         return this._http.post(_url, user);
     }
-    //         { 
-        
-    //     firstname      : user.firstname,
-    //     lastname       : user.lastname,
-    //     username       : user.username,
-    //     email          : user.email,
-    //     maritalstatus  : user.maritalstatus,
-    //     gender         : user.gender,});
-    // }   
+   
 }

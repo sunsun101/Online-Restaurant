@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
-import { testservices } from '../services/test.services';
+import {getServices} from '../services/get.services';
 import { postServices } from '../services/post.services';
 
 
@@ -11,7 +11,7 @@ import { postServices } from '../services/post.services';
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css'],
-  providers: [testservices, postServices]
+  providers: [getServices, postServices]
 })
 export class SignupComponent implements OnInit {
 
@@ -22,18 +22,8 @@ export class SignupComponent implements OnInit {
 
   defaultvalue = 'male';
   maritalstatus = ['single','married'];
-  public my_obj: any;
-  public post_obj: any = {
-
-  firstname      :'',
-  lastname       :'',
-  username       :'',
-  email          : '',
-  maritalstatus  :'',
-  gender         : '',
-
-
-  }
+ 
+  
 
 
 
@@ -59,6 +49,7 @@ export class SignupComponent implements OnInit {
       this.user.maritalstatus     = this.signupform.value.marital_status;
       this.user.gender            = this.signupform.value.gender;
       this.signupform.reset();
+      this.postdetail();
   }
 
 
@@ -68,19 +59,14 @@ export class SignupComponent implements OnInit {
   }
 
   
-  constructor(private test : testservices,private post  : postServices){}
+  constructor(private post  : postServices){}
   
-  public getdetail(){
-
-          this.test.getvalues().subscribe(res => this.my_obj = res.json()[0]);    
-
-
-   }
-
+ 
 
 
   public postdetail(){
-          this.post.postvalues(this.user).subscribe(res => this.post_obj = res.json());
+          console.log("entered postdetail");
+          this.post.postvalues(this.user).subscribe();
   }
 
 

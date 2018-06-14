@@ -20,12 +20,10 @@ export class BodyComponent implements OnInit {
 
   @ViewChild('f') signupform: NgForm;
 
-  message = "This item not ordered yet";
-  displayimage = "./assets/food1.jpg";
+  
 
   buttonvalue: string[] = [''];
-  color = "green";
-  foodlist: any;
+  foodlist : fooditem[];
 
   len : number;
   name : string;
@@ -58,18 +56,27 @@ export class BodyComponent implements OnInit {
  
   onmouseover(i : number){
     this.buttonvalue[i] = "Place Order";
-    this.color = "red";
-  
-
+   
   }
+
   onmouseleave(i: number){
     this.buttonvalue[i] = "Order";
 
   }
 
   getFoodItem():void{
-     this.foodservice.getFood().subscribe((foodlistreceived) => {this.foodlist = foodlistreceived});
-
+     this.foodservice.getFood().subscribe((foodlistreceived) => {
+       this.foodlist = foodlistreceived;
+       if(this.foodlist ){
+         console.log("entered if loop");
+        for(let i = 0 ; i < this.foodlist.length; i++ ){
+          console.log("entered for loop");
+          this.buttonvalue[i] = 'Order';
+        }
+       }
+       
+    });
+    
      
   }
 
@@ -77,11 +84,9 @@ export class BodyComponent implements OnInit {
 
   ngOnInit() {
     this.getFoodItem();
+    
 
-    for(let i = 0 ; i < 7 ; i++ ){
-
-      this.buttonvalue[i] = 'Order';
-    }
+    
 
   }
 
@@ -96,6 +101,7 @@ export class BodyComponent implements OnInit {
     this.modalService.open(content).result;
   
   }
+
 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {

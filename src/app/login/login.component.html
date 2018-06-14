@@ -2,8 +2,9 @@
 <!-- reactive form start -->
 <div class = "loginform">
     <div class = "row">
+        <div class = "col-md-4"></div>
 
-        <div class = "col-12">
+        <div class = "col-md-4">
       
             <h3>Login</h3>
             <form [formGroup] = "loginForm" (ngSubmit) = "loginsubmit()" >
@@ -43,7 +44,7 @@
                 </span>
                 
       
-               <a routerLink = "/home"> <button type="submit" class="btn btn-primary" >Login</button></a>
+                <button type="submit" class="btn btn-primary" >Login</button>
         
       
           </form> 
@@ -54,6 +55,6 @@
       <a routerLink = "/signup">Sign up</a> 
 </div>
 
-
+<div class = "col-md-4"></div>
 <!-- end of reactive form -->
 

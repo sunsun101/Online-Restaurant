@@ -3,7 +3,7 @@ import { Http} from '@angular/http';
 
 @Injectable()
 
-export class testservices{
+export class getServices{
 
     constructor(private _http : Http){
 
@@ -11,8 +11,8 @@ export class testservices{
     }
 
     getvalues(){
-
-        let _url : string = "http://192.168.50.70:8080/tms-service/application/applicationtype";
+        console.log("entered getvalues fxn");
+        let _url : string = "https://ng-online-restaurant.firebaseio.com/data.json ";
         return this._http.get(_url);
     }
 }
