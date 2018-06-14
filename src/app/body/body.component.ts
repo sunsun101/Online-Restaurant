@@ -28,7 +28,6 @@ export class BodyComponent implements OnInit {
   foodlist: any;
 
   len : number;
-  i : number;
   name : string;
   price : number;
   fixedprice : number;
@@ -52,7 +51,7 @@ export class BodyComponent implements OnInit {
   }
 
   getquantity(i : number){
-    console.log("entered function getquantity");
+   
     this.price = this.fixedprice * i;
   }
 
@@ -70,6 +69,7 @@ export class BodyComponent implements OnInit {
 
   getFoodItem():void{
      this.foodservice.getFood().subscribe((foodlistreceived) => {this.foodlist = foodlistreceived});
+
      
   }
 
@@ -78,9 +78,9 @@ export class BodyComponent implements OnInit {
   ngOnInit() {
     this.getFoodItem();
 
-     for(this.i = 0 ; this.i< 6 ; this.i++ ){
+    for(let i = 0 ; i < 7 ; i++ ){
 
-      this.buttonvalue[this.i] = 'Order';
+      this.buttonvalue[i] = 'Order';
     }
 
   }

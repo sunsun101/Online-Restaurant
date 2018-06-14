@@ -33,32 +33,36 @@ export class SearchdisplayComponent implements OnInit {
   
   ngOnInit() {
 
-      this.route.queryParams.subscribe(
-      (param) => {this.foodname = param["property_name"]});
-      console.log(this);
-      this.foodservice.getFood().subscribe((foodlistreceived) => {this.foodlist = foodlistreceived});
-      this.displayFoodItem(this.foodlist);
-      console.log(this.foodlist);
+      // this.route.queryParams.subscribe(
+      // (param) => {this.foodname = param["property_name"]});
+      // console.log(this);
+      // this.foodservice.getFood().subscribe((foodlistreceived) => {this.foodlist = foodlistreceived});
+      // this.displayFoodItem(this.foodlist);
+      // console.log(this.foodlist);
+      console.log("entered value passing fxn");
+      this.displayfoodlist = this.foodservice.displayitem;
+      console.log(this.displayfoodlist);
+      console.log("item should have been displayed");
     
       
     }
 
-    displayFoodItem(obtainedfoodlist: any[]){
+    // displayFoodItem(obtainedfoodlist: any[]){
 
 
       
-      console.log(this);
-      console.log(obtainedfoodlist[0].name);
+    //   console.log(this);
+    //   console.log(obtainedfoodlist[0].name);
    
       
-        for(let j=0 ; j < this.foodlist.length ; j++){
-          console.log("entered display loop");
-          if(this.foodname == obtainedfoodlist[j].id){
-              this.displayfoodlist = obtainedfoodlist[j];
-          }
-        }
+    //     for(let j=0 ; j < this.foodlist.length ; j++){
+    //       console.log("entered display loop");
+    //       if(this.foodname == obtainedfoodlist[j].id){
+    //           this.displayfoodlist = obtainedfoodlist[j];
+    //       }
+    //     }
 
-     }  
+    //  }  
 
         
      

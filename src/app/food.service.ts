@@ -10,7 +10,8 @@ import { catchError, map, tap } from 'rxjs/operators';
 })
 export class FoodService {
 
-    private foodUrl = 'api/Foodlist'
+    private foodUrl = 'api/Foodlist';
+    public displayitem : fooditem[] = [];
 
     constructor( private http: HttpClient){ }
 

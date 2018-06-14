@@ -1,5 +1,18 @@
 <app-body-header></app-body-header>
 
+<section class = "banner">
+  <div class= "container">
+    <div class = "row">
+      <div class = "col-md-8">
+
+        <h3 class = "">Available FoodItems</h3>
+      </div>
+      
+    </div>
+    
+  </div>
+</section>
+
 <!-- div for displaying images -->
 
 <div class = "container">
@@ -43,7 +56,7 @@
       
       <div class="form-group">
           <label>Quantity:</label>
-          <input type="number" class="form-control" name = "quantity" min="1" max="100" value="1" ngModel #quantitybox (change) = "getquantity(quantitybox.value)">
+          <input type="number" class="form-control" name = "quantity" min="1" max="100" ngModel #quantitybox (change) = "getquantity(quantitybox.value)">
 
       </div>
       <div class = "form-group">

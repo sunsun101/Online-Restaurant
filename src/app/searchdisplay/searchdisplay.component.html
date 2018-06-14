@@ -3,7 +3,7 @@
  
   <div class ="row" >
   
-    <div class = "col-4" *ngFor = "let fl of displayfoodlist">
+    <div class = "col-4" *ngFor = "let fl of displayfoodlist;let i = index" >
         <img src = {{fl.image}} class = "image" >
         <p>Item Name : {{fl.name}}</p>
         <p>Price: {{fl.price}}</p>

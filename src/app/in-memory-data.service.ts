@@ -11,6 +11,7 @@ export class InMemoryDataService implements InMemoryDbService {
         {id:4 , name:'sphagetti' ,  price:300 , image :'./assets/sphagetti.jpeg' },
         {id:5 , name:'sushi' ,      price:400 , image :'./assets/sushi.jpg' },
         {id:6 , name:'fried chicken' , price:500 , image :'./assets/friedchicken.jpeg' },
+        {id:7 , name:'momo' ,       price:100 , image :'./assets/momo.jpg' },
        
     
     ]
