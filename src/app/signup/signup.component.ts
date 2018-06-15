@@ -35,6 +35,7 @@ export class SignupComponent implements OnInit {
     email          : '',
     maritalstatus  :'',
     gender         : '',
+    password       : '',
 
 
   }
@@ -48,6 +49,7 @@ export class SignupComponent implements OnInit {
       this.user.email             = this.signupform.value.email;
       this.user.maritalstatus     = this.signupform.value.marital_status;
       this.user.gender            = this.signupform.value.gender;
+      this.user.password          = this.signupform.value.password;
       this.signupform.reset();
       this.postdetail();
   }

@@ -22,7 +22,7 @@
                 </div>
                 <span
                 *ngIf ="!loginForm.get('username').valid && loginForm.get('username').touched">
-                    Please enter valid username!!
+                 
                 </span>
                
                 
@@ -40,7 +40,7 @@
                 <span
                 *ngIf ="!loginForm.get('password').valid && loginForm.get('password').touched">
                  
-                   Incorrect Password
+               
                 </span>
                 
       
@@ -53,6 +53,7 @@
       </div>
       <p>Dont have an account yet?</p>
       <a routerLink = "/signup">Sign up</a> 
+      <p style = "color: red">{{errormessage}}</p>
 </div>
 
 <div class = "col-md-4"></div>

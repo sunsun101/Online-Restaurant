@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
 import { getServices } from '../services/get.services';
 import { fooditem } from '../fooditem';
+import {Routes, Router} from '@angular/router';
+import {profile} from '../profile';
 
 @Component({
   selector: 'app-login',
@@ -12,20 +14,12 @@ import { fooditem } from '../fooditem';
 export class LoginComponent implements OnInit {
 
   loginForm :FormGroup;
-  // public my_obj: any = {
+  my_obj: profile[];
+  result : any[];
+  errormessage : string;
+ 
 
-  //   firstname      :'',
-  //   lastname       :'',
-  //   username       :'',
-  //   email          : '',
-  //   maritalstatus  :'',
-  //   gender         : '',
-  
-  
-  //   }
-  my_obj : fooditem[];
-
-  constructor(private get : getServices) { }
+  constructor(private get : getServices,  private router : Router) { }
 
   ngOnInit() {
 
@@ -35,32 +29,52 @@ export class LoginComponent implements OnInit {
       'password' : new FormControl(null,Validators.required)
   });
   
-  console.log("hello");
+
 }
+
+
 loginsubmit(){
 
-   console.log("entered loginsubmit");
-   this.getdetail();
+    this.getdetail();
  
  }
- public getdetail(){
+ 
+ 
+public getdetail(){
 
-  console.log("entered getdetail");
 
-  this.get.getvalues().subscribe((res) => {this.my_obj = res.json();
-  if(this.my_obj)
+  this.get.getvalues().subscribe((res) => {
+    
+   this.my_obj = res.json();
+   if(this.my_obj)
   {
+    this.result = Object.keys(this.my_obj).map(e=>this.my_obj[e]);
+    console.log(this.result);
     this.validate();
+
   }
 }
 );    
   
-
-
 }
 
+// login validation part
+
 validate(){
+
   
+  for(let j = 0 ; j< this.result.length; j++)
+  {
+    console.log(this.result.length);
+    if(this.loginForm.value.username == this.result[j].username && this.loginForm.value.password == this.result[j].password)
+    {
+      this.router.navigate(['/home']);
+      break;
+    }
+
+  }
+
+ this.errormessage = "Invalid username or password";
 }
 
 
