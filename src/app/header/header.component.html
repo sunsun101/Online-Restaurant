@@ -1,33 +1,108 @@
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-	
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+
 	<div class = "container">
 
 			<a class="navbar-brand" href="#">{{title}}</a>
-	
+
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			
+
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				
-				
+
+
 				<ul class="navbar-nav mr-auto">
-				
+
 					<li class="nav-item active">
 							<a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
 					</li>
-				
+
 					<li class="nav-item">
 							<a class="nav-link" routerLink = '/aboutus'>About us</a>
 					</li>
-				
-				
+
+
 					</ul>
-			 
-				
+
+
 			</div>
+
+      <form class="form-inline my-2 my-lg-0">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click) = "open(content)">Login</button>
+      </form>
 
 	</div>
 
   </nav>
+
+
+<ng-template #content let-c="close" let-d="dismiss">
+
+  <div class="modal-header">
+    <h3>Login</h3>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+
+  <div class="modal-body ">
+
+    <form [formGroup] = "loginForm" (ngSubmit) = "loginsubmit()" >
+
+            <div class="form-group">
+
+              <label for="user_name">Username:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="user_name"
+                formControlName = "username"
+                required>
+
+            </div>
+            <span
+              *ngIf ="!loginForm.get('username').valid && loginForm.get('username').touched">
+
+                </span>
+
+
+
+            <div class="form-group">
+              <label for="pwd">Password:</label>
+              <input
+                type="password"
+                class="form-control"
+                id="pwd"
+                formControlName = "password"
+                required >
+
+            </div>
+            <span
+              *ngIf ="!loginForm.get('password').valid && loginForm.get('password').touched">
+
+
+                </span>
+
+
+            <button type="submit" class="btn btn-primary" >Login</button>
+
+
+          </form>
+
+
+
+      <p>Dont have an account yet?</p>
+      <a routerLink = "/signup" (click)="c('Close click')">Sign up</a>
+      <p style = "color: red">{{errormessage}}</p>
+
+
+
+  </div>
+
+  <div class="modal-footer">
+
+  </div>
+
+</ng-template>

@@ -6,23 +6,20 @@ import {SignupComponent} from '../app/signup/signup.component';
 import {LoginComponent} from '../app/login/login.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { SearchdisplayComponent } from './searchdisplay/searchdisplay.component';
+import {CheckGuard} from './router-guard/check-guard';
 
 const routes: Routes = [
-    
-  {path:'',component:LoginComponent},
-  {path:'home',component:BodyComponent},
-  {path:'signup',component:SignupComponent},
-  {path:'aboutus',component:AboutUsComponent},
-  {path:'search_display',component:SearchdisplayComponent}
- 
-  
+  {path: '', component: LoginComponent},
+  {path: 'home', component: BodyComponent, canActivate : [CheckGuard]},
+  {path: 'signup', component: SignupComponent},
+  {path: 'aboutus', component: AboutUsComponent},
+  {path: 'search_display', component: SearchdisplayComponent}
 ]
 
 
 @NgModule({
   imports: [ RouterModule.forRoot(routes) ],
   exports: [ RouterModule ]
-  
 })
 
 export class AppRoutingModule { }

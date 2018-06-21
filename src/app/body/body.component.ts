@@ -10,7 +10,7 @@ import { ViewChild , Input} from '@angular/core';
   selector: 'app-body',
   templateUrl: './body.component.html',
   styleUrls: ['./body.component.css'],
- 
+
 })
 @NgModule({
   imports: [NgbModule]
@@ -20,86 +20,67 @@ export class BodyComponent implements OnInit {
 
   @ViewChild('f') signupform: NgForm;
 
-  
+
 
   buttonvalue: string[] = [''];
-  foodlist : fooditem[];
+  foodlist: fooditem[];
 
-  len : number;
-  name : string;
-  price : number;
-  fixedprice : number;
-  quantity : number;
+  len: number;
+  name: string;
+  price: number;
+  fixedprice: number;
+  quantity: number;
 
 
-  searchvalue(form : NgForm){
+  searchvalue(form: NgForm) {
 
     console.log(form);
 
   }
 
-  constructor(private foodservice: FoodService, private modalService: NgbModal) { 
+  constructor(private foodservice: FoodService, private modalService: NgbModal) {
 
-  
+
     // setTimeout(() => {
     //   this.displayimage = "./assets/food2.jpeg";
     // },3000);
-  
-    
+
+
   }
 
-  getquantity(i : number){
-   
+  getquantity(i: number) {
+
     this.price = this.fixedprice * i;
   }
 
- 
-  onmouseover(i : number){
-    this.buttonvalue[i] = "Place Order";
-   
+
+  onmouseover(i: number) {
+    this.buttonvalue[i] = 'Place Order';
   }
 
-  onmouseleave(i: number){
-    this.buttonvalue[i] = "Order";
+  onmouseleave(i: number) {
+    this.buttonvalue[i] = 'Order';
 
   }
 
-  getFoodItem():void{
+  getFoodItem(): void {
      this.foodservice.getFood().subscribe((foodlistreceived) => {
        this.foodlist = foodlistreceived;
-       if(this.foodlist ){
-         console.log("entered if loop");
+       if(this.foodlist ) {
+         console.log('entered if loop');
         for(let i = 0 ; i < this.foodlist.length; i++ ){
-          console.log("entered for loop");
+          console.log('entered for loop');
           this.buttonvalue[i] = 'Order';
         }
-       }
-       
-    });
-    
-     
-  }
-
-  
-
+       }});}
   ngOnInit() {
     this.getFoodItem();
-    
-
-    
-
   }
-
- 
-
- 
-
-  open(content, j : number) {
+  open(content, j: number) {
     this.name = this.foodlist[j].name;
     this.price = this.foodlist[j].price ;
     this.fixedprice = this.foodlist[j].price;
     this.modalService.open(content).result;
-  
   }
 
 

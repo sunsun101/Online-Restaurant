@@ -11,12 +11,13 @@ import { BodyComponent } from './body/body.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { BodyHeaderComponent } from './body-header/body-header.component';
-import { AppRoutingModule } from './/app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './in-memory-data.service';
 import { AboutUsComponent } from './about-us/about-us.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { SearchdisplayComponent } from './searchdisplay/searchdisplay.component';
+import {CheckGuard} from './router-guard/check-guard';
 
 
 @NgModule({
@@ -33,15 +34,15 @@ import { SearchdisplayComponent } from './searchdisplay/searchdisplay.component'
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule,
     HttpModule,
-   AppRoutingModule,
-   NgbModule.forRoot(),
-   HttpClientModule,
-   HttpClientInMemoryWebApiModule.forRoot(
-   InMemoryDataService, { dataEncapsulation: false })
+    ReactiveFormsModule,
+    AppRoutingModule,
+    NgbModule.forRoot(),
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+    InMemoryDataService, {dataEncapsulation: false})
   ],
-  providers: [],
+  providers: [CheckGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

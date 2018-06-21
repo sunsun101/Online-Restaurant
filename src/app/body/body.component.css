@@ -1,6 +1,6 @@
 .col-4{
 	padding: 25px;
-	
+
 
 }
 .image{
@@ -30,6 +30,7 @@
 	background-color: #FAFAFA;
 	border-top:1px solid #E7E7E7;
 	border-bottom:1px solid #E7E7E7;
+  margin-top:56px;
 
 }
 .col-md-8{
